@@ -1,0 +1,25 @@
+@import "tailwindcss";
+* {
+  font-family: 'open sans';
+}
+
+/* Hide calendar icon (Date input) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+/* Hide clock icon (Time input) */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
