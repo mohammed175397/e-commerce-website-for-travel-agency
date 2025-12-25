@@ -5,8 +5,8 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import TourPackages from "../pages/TourPackages";
 import CardDetails from '../pages/PageDetails';
-import BookingDetails from "../pages/BookingDetails";
-import YourDetails from '../pages/YourDetails';
+import BookingDetails from "../pages/YourDetails";
+import YourDetails from '../pages/BookingDetails';
 import Pyment from '../pages/Pyment'
 import OrderComplete from '../pages/OrderComplete';
 

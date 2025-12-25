@@ -18,7 +18,6 @@ import { MdMoney } from "react-icons/md";
 import { FaBus } from "react-icons/fa";
 import { RiGuideFill } from "react-icons/ri";
 
-
 function CardDetails() {
 
   const { id } = useParams();

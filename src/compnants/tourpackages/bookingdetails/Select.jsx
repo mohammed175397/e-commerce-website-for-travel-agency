@@ -10,7 +10,6 @@ function Select() {
 
     <div className="space-y-2">
     <label className="block font-medium">Select date</label>
-
     <DatePicker
         selected={date}
         onChange={(d) => setDate(d)}
