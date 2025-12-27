@@ -1,24 +1,23 @@
-import { useState } from "react"
 
-function Counter() {
-    const [counter, setCounter] = useState(0);
+function Counter({value, onChange, min=0, max = Infinity}) {
 
-    const counter2 = () => {
-       setCounter((prev) => prev == 0 ? 0 : prev - 1)
-    }
+  const dec = () => onChange(value - 1);
+  const inc = () => onChange(value + 1 )
 
   return (
     <div className="flex items-center border justify-between rounded-sm  border-black/20 px-2 w-25">
       <button
         className="cursor-pointer w-3 hover:text-2xl transition-all"
-        onClick={counter2}
+        onClick={dec}
+        disabled={value <= min}
       >
         -
       </button>
-      <p className="bg-gray-200 p-2">{counter}</p>
+      <p className="bg-gray-200 p-2">{value}</p>
       <button
         className="cursor-pointer w-3 text-lg hover:text-2xl transition-all"
-        onClick={() => setCounter((prev) => prev + 1)}
+        onClick={inc}
+        disabled={value >= max}
       >
         +
       </button>

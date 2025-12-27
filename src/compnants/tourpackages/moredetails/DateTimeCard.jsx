@@ -97,7 +97,7 @@ function DateTimeCard() {
       {/* Action button */}
       <button
         className=" cursor-pointer mt-4 w-full bg-orange-500 text-white py-2 rounded-xl font-semibold hover:bg-orange-600 transition"
-        onClick={() => navigate("/tourpackages/your-details")}
+        onClick={() => navigate("/tourpackages/booking-details")}
       >
         Buy Now
       </button>

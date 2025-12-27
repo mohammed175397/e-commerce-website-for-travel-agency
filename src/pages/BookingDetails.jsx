@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import TicketsOverview from "../compnants/common/TicketsOverview";
 import DetailsPackges from '../compnants/tourpackages/bookingdetails/DetailsPackges'
 function BookingDetails() { 

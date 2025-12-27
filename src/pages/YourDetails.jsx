@@ -1,7 +1,10 @@
-import React from 'react'
-
+import YourDetail from "../compnants/yourdetails/YourDetail";
 function YourDetails() {
-  return <div>YourDetails</div>;
+  return (
+    <div>
+      <YourDetail />
+    </div>
+  )
 }
 
 export default YourDetails;
