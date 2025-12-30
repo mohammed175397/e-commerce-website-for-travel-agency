@@ -1,8 +1,11 @@
 import { IoTimeOutline } from "react-icons/io5";
 import { MdOutlineDateRange } from "react-icons/md";
 import wine from '../../assets/rectangle/wine.png';
+import { useNavigate } from "react-router";
 
-function TicketsOverview() {
+function TicketsOverview({nextStep}) {
+
+  const navigate = useNavigate();
   return (
     <div className="w-[33%] border border-black/20 rounded-xl p-3">
       <h2 className="font-bold">Your Tickets Overview</h2>
@@ -59,7 +62,10 @@ function TicketsOverview() {
         <p className="font-bold opacity-50">Total Price</p>
         <p className="text-orange-500 font-bold">€86.00</p>
       </div>
-      <button className="w-full rounded-xl p-2 cursor-pointer text-white bg-orange-400">
+      <button
+        className="w-full rounded-xl p-2 cursor-pointer text-white bg-orange-400"
+        onClick={() => navigate(nextStep)}
+      >
         Go to the Next Step
       </button>
     </div>

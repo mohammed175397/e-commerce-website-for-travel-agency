@@ -6,7 +6,7 @@ function BookingDetails() {
       <div></div>
       <div className="flex items-center justify-between">
         <DetailsPackges />
-        <TicketsOverview />
+        <TicketsOverview nextStep="/tourpackages/your-details" />
       </div>
     </div>
   );

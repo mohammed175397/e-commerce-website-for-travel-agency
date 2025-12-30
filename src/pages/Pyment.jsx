@@ -1,8 +1,10 @@
-import React from 'react'
+import CreditCard from "../compnants/pyment/CreditCard"
 
 function Pyment() {
   return (
-    <div>Pyment</div>
+    <>
+      <CreditCard />
+    </>
   )
 }
 

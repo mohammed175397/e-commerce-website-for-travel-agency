@@ -9,7 +9,7 @@ function Counter({value, onChange, min=0, max = Infinity}) {
       <button
         className="cursor-pointer w-3 hover:text-2xl transition-all"
         onClick={dec}
-        disabled={value <= min}
+        // disabled={value <= min}
       >
         -
       </button>
@@ -17,7 +17,7 @@ function Counter({value, onChange, min=0, max = Infinity}) {
       <button
         className="cursor-pointer w-3 text-lg hover:text-2xl transition-all"
         onClick={inc}
-        disabled={value >= max}
+        // disabled={value >= max}
       >
         +
       </button>

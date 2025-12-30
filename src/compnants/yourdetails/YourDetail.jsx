@@ -8,26 +8,26 @@ function YourDetail() {
         email: null
     })
   return (
-    <div className="my-30 mx-3 flex flex-col gap-5">
+    <div className="m-30 flex flex-col gap-5">
       <h2 className="font-bold">Who shall we send these tickets to ?</h2>
       <div className="flex  gap-10 justify-between">
-        <div className="flex flex-col gap-10">
-            <div className="flex items-center gap-10">
-                <div className="flex flex-col">
-                    <label htmlFor="">Name</label>
-                    <input
-                        type="text"
-                        value={form.name}
-                        onChange={(e) =>
-                        setForm((prev) => ({
-                            ...prev,
-                            name: e.target.value,
-                        }))
-                        }
-                        placeholder="Enter your name"
-                        className="w-80 border border-black/20 rounded-sm p-2"
-                    />
-                </div>
+       <div className="flex flex-col gap-10">
+        <div className="flex items-center gap-10">
+            <div className="flex flex-col">
+                <label htmlFor="">Name</label>
+                <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) =>
+                    setForm((prev) => ({
+                        ...prev,
+                        name: e.target.value,
+                    }))
+                    }
+                    placeholder="Enter your name"
+                    className="w-80 border border-black/20 rounded-sm p-2"
+                />
+            </div>
                 <div className="flex flex-col ">
                 <label htmlFor="">Surname</label>
                 <input
