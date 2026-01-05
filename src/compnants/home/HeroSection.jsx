@@ -70,7 +70,6 @@ function HeroSection() {
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
-
         {/* TOUR */}
         <div className="flex flex-col">
           <div className="flex items-center justify-center gap-1 py-2">
@@ -92,7 +91,6 @@ function HeroSection() {
             <option>Italy Special Trips</option>
           </select>
         </div>
-
         {/* TRANSPORTATION */}
         <div className="flex flex-col">
           <div className="flex items-center justify-center gap-1 py-2">

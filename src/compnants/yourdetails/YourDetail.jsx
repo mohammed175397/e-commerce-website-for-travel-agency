@@ -1,5 +1,7 @@
 import { useState } from "react";
 import TicketsOverview from "../common/TicketsOverview";
+import { Navigate } from "react-router-dom";
+
 function YourDetail() {
     const [form, setForm] = useState({
         name:null,
@@ -62,7 +64,7 @@ function YourDetail() {
                 </div>
             </div>
         </div>
-        <TicketsOverview />      
+        <TicketsOverview nextStep={() => {}}/>      
       </div>
     </div>
   );

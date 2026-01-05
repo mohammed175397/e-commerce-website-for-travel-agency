@@ -95,7 +95,7 @@ function Header() {
               <UserButton.Action
                 label="My Tickets"
                 labelIcon={<AiOutlineContainer />}
-                onClick={() => navigate("/my-tickets")}
+                onClick={() => navigate("/mytickets")}
               />
             </UserButton.MenuItems>
           </UserButton>

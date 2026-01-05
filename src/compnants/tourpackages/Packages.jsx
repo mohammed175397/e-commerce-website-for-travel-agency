@@ -2,6 +2,7 @@ import TOURSDATA from "../common/featurdData";
 import Card from "../common/Card";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router";
+
 function Packages() {
   const navigate = useNavigate();
   return (

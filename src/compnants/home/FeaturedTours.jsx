@@ -42,7 +42,6 @@ function FeaturedTours() {
           </button>
         </div>
       </div>
-
       {/*  Slider */}
       <div
         ref={sliderRef}

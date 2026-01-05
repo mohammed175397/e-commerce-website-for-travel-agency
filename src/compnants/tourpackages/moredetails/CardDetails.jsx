@@ -9,7 +9,7 @@ import winee from '../../../assets/rectangle/winee.png';
 
 import { useParams } from "react-router-dom";
 import TOURSDATA from '../../common/featurdData';
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { IoIosPeople } from "react-icons/io";
 import { TiTime } from "react-icons/ti";
 import { FaLocationDot } from "react-icons/fa6";
@@ -19,12 +19,9 @@ import { FaBus } from "react-icons/fa";
 import { RiGuideFill } from "react-icons/ri";
 
 function CardDetails() {
-
-  const { id } = useParams();
-  const DataCard = TOURSDATA?.find(
-    (data) => Number(data.id) === Number(id)
-  );
   
+  const { id } = useParams();
+  const DataCard = TOURSDATA?.find((data) => Number(data.id) === Number(id));
   const navigate = useNavigate();
 
   return (
@@ -64,7 +61,7 @@ function CardDetails() {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book
           </p>
-          <DateTimeCard />
+          <DateTimeCard/>
         </div>
       </div>
       {/* dtails */}

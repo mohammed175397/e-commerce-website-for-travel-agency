@@ -1,30 +1,29 @@
-
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import UseBooking from "../../../context/UseBooking";
+import { useMemo } from "react";
 
 function DateTimeCard() {
-
   const navigate = useNavigate();
+  const {selectedDate, setSelectedDate} = UseBooking();
 
-  // Selected day
-  const [selectedDate, setSelectedDate] = useState(null);
-  // Current month & year
-  const [currentDate, setCurrentDate] = useState(new Date());
   // Extract month name and year
-  const monthName = currentDate.toLocaleString("en-US", { month: "long" });
-  const year = currentDate.getFullYear();
+  const monthName = selectedDate.currentDate.toLocaleString("en-US", {
+    month: "long",
+  });
+  const year = selectedDate.currentDate.getFullYear();
   // Days of week
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   // Get number of days in the current month (28 / 30 / 31)
   const daysInMonth = new Date(
     year,
-    currentDate.getMonth() + 1,
+    selectedDate.currentDate.getMonth() + 1,
     0
   ).getDate();
-
   // Create days array
-  const dates = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-
+const dates = useMemo(
+  () => Array.from({ length: daysInMonth }, (_, i) => i + 1),
+  [daysInMonth]
+);
   return (
     <div className=" rounded-2xl  w-75 p-4">
       {/* Header */}
@@ -36,7 +35,13 @@ function DateTimeCard() {
         <div className="flex items-center justify-between mb-2">
           <button
             onClick={() =>
-              setCurrentDate(new Date(year, currentDate.getMonth() - 1))
+              setSelectedDate((prev) => ({
+                ...prev,
+                currentDate: new Date(
+                  year,
+                  selectedDate.currentDate.getMonth() - 1
+                ),
+              }))
             }
             className="px-2 text-gray-500 hover:text-black"
           >
@@ -46,17 +51,21 @@ function DateTimeCard() {
           <div className="text-center font-semibold">
             {monthName} {year}
           </div>
-
           <button
             onClick={() =>
-              setCurrentDate(new Date(year, currentDate.getMonth() + 1))
+              setSelectedDate((prev) => ({
+                ...prev,
+                currentDate: new Date(
+                  year,
+                  selectedDate.currentDate.getMonth() + 1
+                ),
+              }))
             }
             className="px-2 text-gray-500 hover:text-black"
           >
             ›
           </button>
         </div>
-
         {/* Days of week */}
         <div className="grid grid-cols-7 text-xs text-gray-400 mb-2">
           {days.map((day) => (
@@ -65,16 +74,28 @@ function DateTimeCard() {
             </div>
           ))}
         </div>
-
         {/* Dates */}
         <div className="grid grid-cols-7 gap-1 text-sm">
           {dates.map((date) => (
             <button
               key={date}
-              onClick={() => setSelectedDate(date)}
+              onClick={() =>
+                setSelectedDate((prev) => {
+                  const fullDate = new Date(
+                    prev.currentDate.getFullYear(),
+                    prev.currentDate.getMonth(),
+                    date
+                  );
+                  return {
+                    ...prev,
+                    date,
+                    selectedFullDate: fullDate, 
+                  };
+                })
+              }
               className={`h-8 rounded-lg flex items-center justify-center transition
                   ${
-                    selectedDate === date
+                    selectedDate.date === date
                       ? "bg-orange-500 text-white"
                       : "hover:bg-gray-100 text-gray-700"
                   }`}
@@ -91,6 +112,10 @@ function DateTimeCard() {
         <input
           type="time"
           className="w-full border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+          value={selectedDate.time}
+          onChange={(e) =>
+            setSelectedDate((prev) => ({ ...prev, time: e.target.value }))
+          }
         />
       </div>
 
