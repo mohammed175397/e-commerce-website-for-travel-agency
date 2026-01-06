@@ -8,7 +8,7 @@ function Select() {
 
   return (
     <div className="space-y-2">
-      <label className="block font-medium">Select date</label>
+      <label className="block font-medium">When you will visit?</label>
       <DatePicker
         selected={selectedDate.selectedFullDate}
         onChange={(d) =>

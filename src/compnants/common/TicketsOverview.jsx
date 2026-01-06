@@ -3,23 +3,32 @@ import { MdOutlineDateRange } from "react-icons/md";
 import wine from '../../assets/rectangle/wine.png';
 import { useNavigate } from "react-router";
 import UseBooking from "../../context/UseBooking";
-import { Price } from "./utiles/utlies";
+import { Price, totalPrice } from "./utiles/utlies";
 
 
+function TicketsOverview({nextStep, step = 1}) {
 
-function TicketsOverview({nextStep}) {
-
-  const { selectedDate, counts, prices  } = UseBooking();
+  const { selectedDate, counts, prices, form } = UseBooking();
   const Date = selectedDate.selectedFullDate
     ?.toLocaleString("en-CA")
     .split(",")[0];
   const navigate = useNavigate();
 
-  const isFormValid =
-    selectedDate.selectedFullDate &&
-    selectedDate.time &&
-    (counts.adult > 0 || counts.child > 0 || counts.infant > 0);
+  const isStep1Valid =
+    !!selectedDate?.selectedFullDate &&
+    !!selectedDate?.time &&
+    (Number(counts?.adult) > 0 ||
+      Number(counts?.infant) > 0);
 
+    const isStep2Valid =
+      !!form?.name?.trim() &&
+      !!form?.surname?.trim() &&
+      !!String(form?.telephonenumber || "").trim() &&
+      !!form?.email?.trim();
+
+    
+    const isValid = step === 1 ? isStep1Valid : isStep2Valid;
+      
   return (
     <div className="w-[33%] border border-black/20 rounded-xl p-3">
       <h2 className="font-bold">Your Tickets Overview</h2>
@@ -74,17 +83,19 @@ function TicketsOverview({nextStep}) {
       <hr className="opacity-20" />
       <div className="flex items-center justify-between my-5">
         <p className="font-bold opacity-50">Total Price</p>
-        <p className="text-orange-500 font-bold">€86.00</p>
+        <p className="text-orange-500 font-bold">
+          €{totalPrice(counts, prices)}
+        </p>
       </div>
       <button
         className={`w-full rounded-xl p-2 text-white
     ${
-      isFormValid
+      isValid
         ? "bg-orange-400 cursor-pointer"
         : "bg-gray-300 cursor-not-allowed"
     }
   `}
-      onClick={() => isFormValid && navigate(nextStep)}
+      onClick={() => isValid && navigate(nextStep)}
       >
         Go to the Next Step
       </button>

@@ -1,4 +1,4 @@
-// import UseBooking from "../../../context/UseBooking";
-//   const { selectedDate, counts, prices, setPrices } = UseBooking();
 
   export const Price = (amount, price) => Number(amount) * Number(price);
+
+  export const totalPrice = (counts,prices) => (counts.adult * prices.adult) + (counts.child * prices.child);

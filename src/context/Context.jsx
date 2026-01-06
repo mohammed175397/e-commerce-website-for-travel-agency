@@ -27,6 +27,14 @@ const BookingProvider = ({children}) => {
       child: "36.00",
       infant: "Free",
     });  
+
+     const [form, setForm] = useState({
+       name: null,
+       surname: null,
+       telephonenumber: null,
+       email: null,
+     });
+
   return (
     <BookingContext.Provider
       value={{
@@ -37,6 +45,8 @@ const BookingProvider = ({children}) => {
         setCount,
         prices,
         setPrices,
+        form,
+        setForm,
       }}
     >
       {children}
