@@ -19,7 +19,6 @@ function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
-
           <Route path="/tourpackages">
             <Route index element={<TourPackages />} />
             <Route path="carddetails/:id" element={<CardDetails />} />

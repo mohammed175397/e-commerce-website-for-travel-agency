@@ -4,8 +4,8 @@ import UseBooking from "../../context/UseBooking";
 function YourDetail() {
    const {form, setForm} = UseBooking();
   return (
-    <div className="m-30 flex flex-col gap-5">
-      <h2 className="font-bold">Who shall we send these tickets to ?</h2>
+    <div className="m-10 flex flex-col gap-5">
+      <h2 className="font-bold"> Who shall we send these tickets to ?</h2>
       <div className="flex  gap-10 justify-between">
         <div className="flex flex-col gap-10">
           <div className="flex items-center gap-10">

@@ -7,8 +7,6 @@ import wine6 from '../../../assets/rectangle/wine6.png';
 import wine7 from '../../../assets/rectangle/wine7.png';
 import winee from '../../../assets/rectangle/winee.png';
 
-import { useParams } from "react-router-dom";
-import TOURSDATA from '../../common/featurdData';
 import { useNavigate } from "react-router-dom";
 import { IoIosPeople } from "react-icons/io";
 import { TiTime } from "react-icons/ti";
@@ -17,11 +15,21 @@ import { FaLanguage } from "react-icons/fa";
 import { MdMoney } from "react-icons/md";
 import { FaBus } from "react-icons/fa";
 import { RiGuideFill } from "react-icons/ri";
+import { useParams } from "react-router-dom";
+import TOURSDATA from "../../common/featurdData";
+import UseBooking from "../../../context/UseBooking";
+import { useEffect } from "react";
 
 function CardDetails() {
-  
+  const {setTour} = UseBooking();
   const { id } = useParams();
-  const DataCard = TOURSDATA?.find((data) => Number(data.id) === Number(id));
+  const DataCard = TOURSDATA?.find(
+    (data) => Number(data.id) === Number(id)
+  );
+  
+  useEffect(() => {
+    if (DataCard) setTour(DataCard.title);
+  }, [DataCard, setTour]);
   const navigate = useNavigate();
 
   return (

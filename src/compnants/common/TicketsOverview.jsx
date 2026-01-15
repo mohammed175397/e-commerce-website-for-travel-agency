@@ -8,7 +8,8 @@ import { Price, totalPrice } from "./utiles/utlies";
 
 function TicketsOverview({nextStep, step = 1}) {
 
-  const { selectedDate, counts, prices, form } = UseBooking();
+  const { selectedDate, counts, prices, form , method, tour, confirmBooking} = UseBooking();
+
   const Date = selectedDate.selectedFullDate
     ?.toLocaleString("en-CA")
     .split(",")[0];
@@ -26,16 +27,19 @@ function TicketsOverview({nextStep, step = 1}) {
       !!String(form?.telephonenumber || "").trim() &&
       !!form?.email?.trim();
 
+    const isStep3Valid = !!method
     
-    const isValid = step === 1 ? isStep1Valid : isStep2Valid;
-      
+    const isValid =
+      step === 1 ? isStep1Valid : step === 2 ? isStep2Valid : isStep3Valid;
+    // console.log(typeof nextStep);
+    
   return (
     <div className="w-[33%] border border-black/20 rounded-xl p-3">
       <h2 className="font-bold">Your Tickets Overview</h2>
       <div className="flex gap-5 items-center my-4">
         <img className="w-40 rounded-xl" src={wine} alt="" />
         <div>
-          <h2 className="font-bold">hidden</h2>
+          <h2 className="font-bold">{tour}</h2>
           <div className="flex  items-center gap-2">
             <MdOutlineDateRange className="text-orange-500" />
             <p>{Date}</p>
@@ -87,18 +91,38 @@ function TicketsOverview({nextStep, step = 1}) {
           €{totalPrice(counts, prices)}
         </p>
       </div>
-      <button
-        className={`w-full rounded-xl p-2 text-white
+      {Number(step) === 3 ? (
+        <button
+          // onClick={}
+          className={`w-full rounded-xl p-2 text-white
     ${
       isValid
         ? "bg-orange-400 cursor-pointer"
         : "bg-gray-300 cursor-not-allowed"
     }
   `}
-      onClick={() => isValid && navigate(nextStep)}
-      >
-        Go to the Next Step
-      </button>
+          onClick={() => {
+            if (!isValid) return;
+            confirmBooking();
+            navigate(nextStep);
+          }}
+        >
+          Confirm
+        </button>
+      ) : (
+        <button
+          className={`w-full rounded-xl p-2 text-white
+    ${
+      isValid
+        ? "bg-orange-400 cursor-pointer"
+        : "bg-gray-300 cursor-not-allowed"
+    }
+  `}
+          onClick={() => isValid && navigate(nextStep)}
+        >
+          Go to the Next Step
+        </button>
+      )}
     </div>
   );
 }

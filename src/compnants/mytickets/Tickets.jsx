@@ -1,8 +1,25 @@
 import FeaturedTours from "../home/FeaturedTours";
 import trip from '../../assets/rectangle/Trip-pana 1.png';
-import TOURSDATA from '../../compnants/common/featurdData';
+import UseBooking from "../../context/UseBooking";
+
 
 function Tickets() {
+  const {tickets} = UseBooking();
+  
+  if (tickets.length === 0) {
+    return (
+      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-center m-25">
+        <img src={trip} alt="not found" />
+        <p className="opacity-60">
+          You don't have any tickets yet. Start planning your next trip!
+        </p>
+      </div>
+        <FeaturedTours />
+      </div>
+    );
+  }
+  
   return (
     <div className=" m-35 flex flex-col gap-5 ">
       <h2 className="font-bold">My Tickets</h2>
@@ -17,26 +34,22 @@ function Tickets() {
             </tr>
           </thead>
           <tbody>
-            {TOURSDATA.map((tour) => (
-              <tr key={tour.id}>
+            {tickets.map((ticket) => (
+              <tr key={ticket.id}>
                 <td>
                   <img
                     className="w-20 h-16 object-cover rounded "
-                    src={tour.image}
-                    alt=""
+                    src={ticket.image}
+                    alt="not-found"
                   />
                 </td>
-                <td className="text-center">{tour.id}</td>
-                <td className="text-center">{tour.price}</td>
-                <td className="text-center">{tour.people}</td>
+                <td className="text-center">{ticket.paymentMethod}</td>
+                <td className="text-center">{ticket.price}</td>
+                <td className="text-center">{ticket.status}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <img src={trip} alt="not found" />
-        <p className="opacity-60">
-          You don't have any tickets yet. Start planning your next trip!
-        </p>
       </div>
       <FeaturedTours />
     </div>
