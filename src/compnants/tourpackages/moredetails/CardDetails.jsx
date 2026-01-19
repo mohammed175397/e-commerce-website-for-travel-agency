@@ -21,15 +21,19 @@ import UseBooking from "../../../context/UseBooking";
 import { useEffect } from "react";
 
 function CardDetails() {
-  const {setTour} = UseBooking();
+  const { setTour, setImageTour } = UseBooking();
   const { id } = useParams();
   const DataCard = TOURSDATA?.find(
     (data) => Number(data.id) === Number(id)
   );
   
   useEffect(() => {
-    if (DataCard) setTour(DataCard.title);
-  }, [DataCard, setTour]);
+    if (DataCard) {
+      setTour(DataCard.title);
+      setImageTour(DataCard.image);
+    }
+  }, [DataCard, setTour, setImageTour]);
+
   const navigate = useNavigate();
 
   return (

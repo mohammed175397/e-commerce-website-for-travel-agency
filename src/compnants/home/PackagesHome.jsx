@@ -56,7 +56,7 @@ function PackagesHome() {
     <div className="flex justify-evenly items-center h-140 m-35 ">
       {CARDS.map((card) => (
         <div key={card.id} className="w-68 h-140 rounded-2xl shadow-xl">
-          <img className='h-68 w-68' src={card.img} alt="photo not found" />
+          <img className='h-68 w-68' src={card.img} loading='lazy' alt="photo not found" />
           <div className="p-5">
             <h2 className="font-bold">{card.title}</h2>
             <p className="my-2">

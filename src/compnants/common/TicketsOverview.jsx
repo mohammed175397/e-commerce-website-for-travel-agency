@@ -1,6 +1,5 @@
 import { IoTimeOutline } from "react-icons/io5";
 import { MdOutlineDateRange } from "react-icons/md";
-import wine from '../../assets/rectangle/wine.png';
 import { useNavigate } from "react-router";
 import UseBooking from "../../context/UseBooking";
 import { Price, totalPrice } from "./utiles/utlies";
@@ -8,7 +7,16 @@ import { Price, totalPrice } from "./utiles/utlies";
 
 function TicketsOverview({nextStep, step = 1}) {
 
-  const { selectedDate, counts, prices, form , method, tour, confirmBooking} = UseBooking();
+  const {
+    selectedDate,
+    counts,
+    prices,
+    form,
+    method,
+    tour,
+    confirmBooking,
+    imageTour,
+  } = UseBooking();
 
   const Date = selectedDate.selectedFullDate
     ?.toLocaleString("en-CA")
@@ -20,24 +28,25 @@ function TicketsOverview({nextStep, step = 1}) {
     !!selectedDate?.time &&
     (Number(counts?.adult) > 0 ||
       Number(counts?.infant) > 0);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const isStep2Valid =
-      !!form?.name?.trim() &&
-      !!form?.surname?.trim() &&
-      !!String(form?.telephonenumber || "").trim() &&
-      !!form?.email?.trim();
+  const isStep2Valid =
+    !!form?.name?.trim() &&
+    !!form?.surname?.trim() &&
+    !!String(form?.telephonenumber || "").trim() &&
+    !!form?.email?.trim() &&
+    emailRegex.test(form.email);
 
     const isStep3Valid = !!method
     
     const isValid =
       step === 1 ? isStep1Valid : step === 2 ? isStep2Valid : isStep3Valid;
     // console.log(typeof nextStep);
-    
   return (
     <div className="w-[33%] border border-black/20 rounded-xl p-3">
       <h2 className="font-bold">Your Tickets Overview</h2>
       <div className="flex gap-5 items-center my-4">
-        <img className="w-40 rounded-xl" src={wine} alt="" />
+        <img className="w-40 rounded-xl" src={imageTour} alt="" />
         <div>
           <h2 className="font-bold">{tour}</h2>
           <div className="flex  items-center gap-2">

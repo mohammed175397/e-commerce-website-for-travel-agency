@@ -39,7 +39,7 @@ function Transfer() {
     <div className="flex justify-evenly items-center m-15 mx-35">
       {CARDS.map((card) => (
         <div key={card.id} className="w-67 h-100">
-          <img src={card.img} alt="not found" />
+          <img src={card.img} loading='lazy' alt="not found" />
           <h2 className="font-bold py-2">{card.name}</h2>
           <p>{card.paragraph}</p>
         </div>

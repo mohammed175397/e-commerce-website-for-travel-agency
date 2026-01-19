@@ -13,11 +13,9 @@ function Offers() {
           <button className="bg-amber-500 w-30 rounded-2xl p-2">Contact Us</button>
         </div>
         <div className="z-1 mb-[147px]">
-          <img src={stock} alt="photo not found" />
+          <img src={stock}  alt="photo not found" />
         </div>
       </div>
-      <div></div>
-      <div></div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ function Welcome() {
   return (
     <div className="flex justify-evenly items-center m-15 mx-35">
       <div>
-        <img className="w-134 " src={image} alt="" />
+        <img className="w-134 " src={image} loading='lazy' alt="" />
       </div>
       <div className="flex flex-col gap-2 w-134">
         <p className='text-sm opacity-40'>WELCOME TO OUR SITE!</p>

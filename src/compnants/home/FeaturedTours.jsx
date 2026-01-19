@@ -47,11 +47,12 @@ function FeaturedTours() {
         ref={sliderRef}
         className="flex gap-8 overflow-x-auto scroll-smooth px-10 py-4 no-scrollbar"
       >
-            {TOURSDATA.map((tour) => (
+        {TOURSDATA.map((tour) => (
         <div
+        key={tour.id}
           className="min-w-[270px] h-[480px] bg-white rounded-xl shadow"
           >
-              <Card key={tour.id} tour={tour} />
+          <Card key={tour.id} tour={tour} />
         </div>
             ))}
       </div>

@@ -29,34 +29,36 @@ const BookingProvider = ({children}) => {
   });  
 
   const [form, setForm] = useState({
-    name: null,
-    surname: null,
-    telephonenumber: null,
-    email: null,
+    name: '',
+    surname: '',
+    telephonenumber: '',
+    email: '',
   });
 
   const [method, setMethod] = useState("");  
   const [tour, setTour] = useState(null); 
   const [tickets, setTickets] = useState([]);
+  const [imageTour, setImageTour] = useState();
 
   const confirmBooking = () => {
     const ticket = {
       id: Date.now(),
       tour: tour,
-      date: selectedDate.date,
+      date: selectedDate.selectedFullDate,
       time: selectedDate.time,
-      image: tour,
+      titleTour: tour,
+      image: imageTour,
       counts: { ...counts },
       customer: { ...form },
       paymentMethod: method,
       price: totalPrice(counts, prices),
       status:
         selectedDate.date && new Date(selectedDate.date) > new Date()
-          ? "Upcomming"
+          ? "Upcoming"
           : "Ended",
     };
 
-    setTickets(prev => [...prev, ticket]);
+    setTickets(prev => [ticket, ...prev ]);
   }
   return (
     <BookingContext.Provider
@@ -77,6 +79,8 @@ const BookingProvider = ({children}) => {
         setTour,
         tickets,
         setTickets,
+        imageTour,
+        setImageTour,
       }}
     >
       {children}
